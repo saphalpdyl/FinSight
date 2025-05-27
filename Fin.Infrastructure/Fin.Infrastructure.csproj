@@ -25,4 +25,8 @@
     <ProjectReference Include="..\Fin.Core\Fin.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>
