@@ -11,8 +11,8 @@ namespace Fin.Infrastructure.Data
         {
         }
 
-        public DbSet<Transaction> Transactions { get; set; } = null!;
-        public DbSet<Account> Accounts { get; set; } = null!;
+        public virtual DbSet<Transaction> Transactions { get; set; } = null!;
+        public virtual DbSet<Account> Accounts { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
