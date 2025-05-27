@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Fin.Core.Entities
@@ -12,6 +13,9 @@ namespace Fin.Core.Entities
 
         [Required]
         public Account Account { get; set; } = null!;
+
+        [Required]
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         [Required]
         [DataType(DataType.Currency)]
