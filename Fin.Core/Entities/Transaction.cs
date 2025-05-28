@@ -9,6 +9,8 @@ namespace Fin.Core.Entities
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
 
+        [Required]
+        public string ExternalId { get; set; } = string.Empty; // External ID from the banking API used when syncing
         public string? Description { get; set; }
 
         [Required]

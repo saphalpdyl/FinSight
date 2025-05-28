@@ -8,6 +8,9 @@ namespace Fin.Core.Entities
         public int Id { get; set; }
 
         [Required]
+        public int ExternalId { get; set; } // External ID from the banking API used when syncing
+
+        [Required]
         public string Name { get; set; } = string.Empty;
 
         [Required]
