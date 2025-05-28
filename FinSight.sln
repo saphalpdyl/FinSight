@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fin.UnitTests", "Fin.Tests\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fin.IntegrationTests", "Fin.IntegrationTests\Fin.IntegrationTests.csproj", "{E1519548-02AD-4AEE-A6BE-43A02D40A255}"
 EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "External.BankingAPI", "External.BankingAPI\External.BankingAPI.esproj", "{22F8DCC4-64EB-7492-DC1E-148E04BAC053}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,12 @@ Global
 		{E1519548-02AD-4AEE-A6BE-43A02D40A255}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1519548-02AD-4AEE-A6BE-43A02D40A255}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1519548-02AD-4AEE-A6BE-43A02D40A255}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22F8DCC4-64EB-7492-DC1E-148E04BAC053}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22F8DCC4-64EB-7492-DC1E-148E04BAC053}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22F8DCC4-64EB-7492-DC1E-148E04BAC053}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{22F8DCC4-64EB-7492-DC1E-148E04BAC053}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22F8DCC4-64EB-7492-DC1E-148E04BAC053}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22F8DCC4-64EB-7492-DC1E-148E04BAC053}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
