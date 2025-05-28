@@ -14,12 +14,13 @@ namespace Fin.Infrastructure.Repositories
             _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
-        public async Task<IEnumerable<Account>> GetAllAccountsAsync(int userId)
+        public async Task<IEnumerable<Account>> GetAllAccountsAsync(string userId)
         {
             return await _dbContext.Accounts
-                .Where(a => a.Id == userId)
+                .Where(a => a.User.Id == userId)
                 .Include(a => a.Transactions
-                    .OrderByDescending(t => t.CreatedAt)
+                        .Where(t => t.Account.Id == a.Id)
+                    //.OrderByDescending(t => t.CreatedAt)
                     .Take(1) // Get the most recent transaction for each account
                 )
                 .ToListAsync();

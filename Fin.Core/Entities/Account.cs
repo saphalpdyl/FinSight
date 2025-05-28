@@ -16,5 +16,8 @@ namespace Fin.Core.Entities
         public DateTime TransactionsCachedUntilDateTime { get; set; } = DateTime.MinValue;
 
         public ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
+
+        [Required]
+        public FinsightUser User { get; set; } = null!;
     }
 }
