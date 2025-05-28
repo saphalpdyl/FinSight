@@ -18,11 +18,17 @@ namespace Fin.Infrastructure.Repositories
         {
             return await _dbContext.Accounts
                 .Where(a => a.User.Id == userId)
-                .Include(a => a.Transactions
-                        .Where(t => t.Account.Id == a.Id)
-                    //.OrderByDescending(t => t.CreatedAt)
-                    .Take(1) // Get the most recent transaction for each account
-                )
+                .Select(a => new Account
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    // Include other Account properties you need
+                    User = a.User,
+                    Transactions = a.Transactions
+                        .OrderByDescending(t => t.CreatedAt)
+                        .Take(1) // This works correctly in Select
+                        .ToList()
+                })
                 .ToListAsync();
         }
     }

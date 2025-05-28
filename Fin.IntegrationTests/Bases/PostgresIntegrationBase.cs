@@ -11,6 +11,10 @@ namespace Fin.IntegrationTests.Bases
 
         protected ApplicationDbContext _dbContext;
 
+        public PostgresIntegrationBase()
+        {
+        }
+
         public async Task InitializeAsync()
         {
             _postgresContainer = new PostgreSqlBuilder()
