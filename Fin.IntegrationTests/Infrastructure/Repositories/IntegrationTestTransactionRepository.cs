@@ -80,7 +80,7 @@ namespace Fin.IntegrationTests.Infrastructure.Repositories
         [Fact]
         public async Task GetAllTransactionByAccountIdAsync_ShouldReturnTransactionsForGivenAccountId()
         {
-            var transactionRepository = new TransactionRepository(_dbContext);
+            var transactionRepository = new TransactionRepository(_dbContext, _logger);
 
             var resultTransactions = await transactionRepository.GetAllTransactionByAccountIdAsync(TEST_ACCOUNT_ID);
 
@@ -93,7 +93,7 @@ namespace Fin.IntegrationTests.Infrastructure.Repositories
         [Fact]
         public async Task GetAllTransactionsByUserIdAsync_ShouldReturnTransactionsForGivenUserId()
         {
-            var transactionRepository = new TransactionRepository(_dbContext);
+            var transactionRepository = new TransactionRepository(_dbContext, _logger);
             if (_fakeUser == null)
             {
                 throw new InvalidOperationException("No user found in the database for testing.");

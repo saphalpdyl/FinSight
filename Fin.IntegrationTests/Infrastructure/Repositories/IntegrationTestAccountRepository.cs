@@ -1,12 +1,15 @@
 ﻿using Fin.Core.Entities;
 using Fin.IntegrationTests.Bases;
 using Fin.Infrastructure.Repositories;
+using Serilog;
+using Serilog.Core;
 using Xunit;
 
 namespace Fin.IntegrationTests.Infrastructure.Repositories
 {
     public sealed class IntegrationTestAccountRepository: PostgresIntegrationBase
     {
+
         [Fact]
         public async Task GetAllAccountsAsync_ShouldReturnAccountsWithOneTransactionMax()
         {
@@ -76,7 +79,7 @@ namespace Fin.IntegrationTests.Infrastructure.Repositories
             _dbContext.Accounts.AddRange(accountsData);
             await _dbContext.SaveChangesAsync();
 
-            var accountRepository = new AccountRepository(_dbContext);
+            var accountRepository = new AccountRepository(_dbContext, _logger);
 
             var result = await accountRepository.GetAllAccountsAsync(fakeUser.Id);
 

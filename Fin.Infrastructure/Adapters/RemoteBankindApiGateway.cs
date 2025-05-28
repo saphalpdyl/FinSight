@@ -10,12 +10,12 @@ using Serilog.Core;
 
 namespace Fin.Infrastructure.Adapters
 {
-    public class RemoteBankindApiGateway(HttpClient _httpClient, Logger _logger): IRemoteBankingApiGateway
+    public class RemoteBankindApiGateway(HttpClient _httpClient, Logger logger): IRemoteBankingApiGateway
     {
-        private readonly Logger _logger = Logger ?? throw new ArgumentNullException(nameof(Logger));
+        private readonly Logger _logger = logger ?? throw new ArgumentNullException(nameof(Logger));
         private readonly HttpClient _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
             
-        public Task<IEnumerable<Transaction>> GetTransactionsWithUserIdFromRemoteAsync(string userId)
+        public async Task<IEnumerable<Transaction>> GetTransactionsWithUserIdFromRemoteAsync(string userId)
         {
             string requestUri = $"transactions?userId={userId}";
 
@@ -27,6 +27,8 @@ namespace Fin.Infrastructure.Adapters
             {
 
             }
+
+            throw new NotImplementedException();
         }
     }
 }

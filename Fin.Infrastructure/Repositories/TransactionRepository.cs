@@ -2,15 +2,18 @@
 using Fin.Core.Repositories;
 using Fin.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Serilog.Core;
 
 namespace Fin.Infrastructure.Repositories
 {
     public class TransactionRepository: ITransactionRepository
     {
+        private readonly Logger _logger;
         private readonly ApplicationDbContext _dbContext;
 
-        public TransactionRepository(ApplicationDbContext dbContext)
+        public TransactionRepository(ApplicationDbContext dbContext, Logger logger)
         {
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 

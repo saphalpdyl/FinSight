@@ -1,5 +1,7 @@
 ﻿using Fin.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
+using Serilog.Core;
 using Testcontainers.PostgreSql;
 using Xunit;
 
@@ -10,6 +12,7 @@ namespace Fin.IntegrationTests.Bases
         protected PostgreSqlContainer _postgresContainer;
 
         protected ApplicationDbContext _dbContext;
+        protected Logger _logger;
 
         public PostgresIntegrationBase()
         {
@@ -17,6 +20,9 @@ namespace Fin.IntegrationTests.Bases
 
         public async Task InitializeAsync()
         {
+            _logger = new LoggerConfiguration()
+            .CreateLogger();
+
             _postgresContainer = new PostgreSqlBuilder()
                 .WithImage("postgres:15-alpine")
                 .Build();
