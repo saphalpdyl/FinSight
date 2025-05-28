@@ -35,10 +35,10 @@ namespace Fin.Infrastructure.Repositories
                 .ToListAsync();
         }
 
-        public Task<Account?> VerifyAccountBelongsToUser(string userId, string accountId)
+        public Task<Account?> VerifyAccountBelongsToUser(string userId, int accountId)
         {
             return _dbContext.Accounts
-                .Where(a => a.User.Id == userId)
+                .Where(a => a.User.Id == userId && a.Id == accountId)
                 .FirstOrDefaultAsync();
         }
     }

@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Fin.IntegrationTests.Infrastructure.Repositories
 {
-    public sealed class IntegrationTestAccountRepository: PostgresIntegrationBase
+    public sealed class IntegrationTestAccountRepository: PostgresIntegrationBase, IAsyncLifetime
     {
         private readonly int TEST_ACCOUNT_ID = 101;
         private readonly FinsightUser _fakeUser = new FinsightUser();
@@ -15,6 +15,7 @@ namespace Fin.IntegrationTests.Infrastructure.Repositories
         public async Task InitializeAsync()
         {
             await base.InitializeAsync();
+
             _dbContext.Users.Add(_fakeUser);
             await _dbContext.SaveChangesAsync();
 
@@ -99,7 +100,7 @@ namespace Fin.IntegrationTests.Infrastructure.Repositories
         public async Task VerifyAccountBelongsToUser_ShouldReturnAccountIfExists()
         {
             var accountRepository = new AccountRepository(_dbContext, _logger);
-            var result = await accountRepository.VerifyAccountBelongsToUser(_fakeUser.Id, TEST_ACCOUNT_ID.ToString());
+            var result = await accountRepository.VerifyAccountBelongsToUser(_fakeUser.Id, TEST_ACCOUNT_ID);
             Assert.NotNull(result);
             Assert.Equal(TEST_ACCOUNT_ID, result.Id);
         }
@@ -108,7 +109,7 @@ namespace Fin.IntegrationTests.Infrastructure.Repositories
         public async Task VerifyAccountBelongsToUser_ShouldReturnNullIfAccountDoesNotBelongToUser()
         {
             var accountRepository = new AccountRepository(_dbContext, _logger);
-            var result = await accountRepository.VerifyAccountBelongsToUser(_anotherFakeUser.Id, TEST_ACCOUNT_ID.ToString());
+            var result = await accountRepository.VerifyAccountBelongsToUser(_anotherFakeUser.Id, TEST_ACCOUNT_ID);
             Assert.Null(result);
         }
     }
