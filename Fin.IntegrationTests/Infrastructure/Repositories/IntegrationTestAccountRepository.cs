@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fin.IntegrationTests.Infrastructure.Repositories
 {
-    public class IntegrationTestAccountRepository
+    public sealed class IntegrationTestAccountRepository
     {
     }
 }

@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Fin.Tests.Infrastructure.Repositories
 {
-    public class TestAccountRepository
+    public sealed class TestAccountRepository
     {
         [Fact]
         public async Task GetAllAccountsAsync_ShouldReturnAccounts()
