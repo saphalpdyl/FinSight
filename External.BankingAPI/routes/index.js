@@ -115,7 +115,10 @@ router.get("/api/v1/transactions/byAccount/", function (req, res, next) {
     (tx) => String(tx.accountId) === String(accountId)
   );
 
-  return res.json(accountTransactions);
+    return res.json({
+        accountId: accountId,
+        transactions: accountTransactions
+    });
 });
 
 module.exports = router;

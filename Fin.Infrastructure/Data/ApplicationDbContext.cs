@@ -17,7 +17,14 @@ namespace Fin.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Transaction>().ToTable("transactions");
+            modelBuilder
+                .Entity<Transaction>()
+                .ToTable("transactions")
+                .HasOne(t => t.Account)
+                .WithMany(a => a.Transactions)
+                .HasForeignKey(t => t.AccountId)
+                .IsRequired();
+
             modelBuilder.Entity<Account>().ToTable("accounts");
         }
     }

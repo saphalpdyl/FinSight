@@ -5,6 +5,6 @@ namespace Fin.Core.Adapters
     public interface IRemoteBankingApiGateway
     {
         Task<IEnumerable<Transaction>> GetTransactionsFromAccountsWithUserIdFromRemoteAsync(string userId,
-            string externalAccountId);
+            string externalAccountId, int internalAccountId);
     }
 }

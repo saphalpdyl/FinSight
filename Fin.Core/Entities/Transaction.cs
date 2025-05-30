@@ -14,6 +14,9 @@ namespace Fin.Core.Entities
         public string? Description { get; set; }
 
         [Required]
+        public int AccountId { get; set; }
+
+        [Required]
         public Account Account { get; set; } = null!;
 
         [Required]
